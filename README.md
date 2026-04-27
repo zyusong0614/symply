@@ -38,13 +38,13 @@ This will automatically build the Swift package and generate a self-contained `S
 ## GitHub Actions Automated Release
 
 This repository is fully set up for "One-Click Deployment" using GitHub Actions. 
-Whenever you push a tag that starts with `v` (e.g., `v1.0.0`), a GitHub Action workflow will automatically:
+Whenever you push a tag that starts with `v` (e.g., `v1.0.1`), a GitHub Action workflow will automatically:
 1. Build `Symply.app` using `build_app.sh`.
 2. Zip the app into `Symply.zip`.
 3. Create a new GitHub Release with the ZIP attached.
 
 To create a new release, simply run:
 ```bash
-git tag v1.0.0
-git push origin v1.0.0
+git tag v1.0.1
+git push origin v1.0.1
 ```
