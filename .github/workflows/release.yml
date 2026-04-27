@@ -1,0 +1,32 @@
+name: Build and Release
+
+on:
+  push:
+    tags:
+      - 'v*' # Trigger on version tags like v1.0.0
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Select Xcode
+      run: sudo xcode-select -s /Applications/Xcode.app
+
+    - name: Build App
+      run: |
+        chmod +x build_app.sh
+        ./build_app.sh
+        
+    - name: Zip App
+      run: |
+        zip -r Symply.zip Symply.app
+
+    - name: Create Release
+      uses: softprops/action-gh-release@v2
+      with:
+        files: Symply.zip
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
