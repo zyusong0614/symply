@@ -2,7 +2,7 @@ import Foundation
 import AppKit
 
 @Observable
-class VolumeMonitor {
+final class VolumeMonitor: @unchecked Sendable {
     var mountedVolumes: [URL] = []
     var onMountStatusChanged: (() -> Void)?
     

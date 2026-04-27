@@ -2,7 +2,7 @@ import Foundation
 import SwiftUI
 
 @Observable
-class AppState {
+final class AppState: @unchecked Sendable {
     var mappings: [SymlinkMapping] = []
     
     var defaultSSDTarget: String = UserDefaults.standard.string(forKey: "DefaultSSDTarget") ?? "" {

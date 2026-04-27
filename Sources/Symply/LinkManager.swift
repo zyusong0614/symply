@@ -1,7 +1,7 @@
 import Foundation
 
 @Observable
-class LinkManager {
+final class LinkManager: @unchecked Sendable {
     let appState: AppState
     
     init(appState: AppState) {
@@ -71,12 +71,16 @@ class LinkManager {
         try FileManager.default.createSymbolicLink(at: localURL, withDestinationURL: destinationURL)
         
         let mapping = SymlinkMapping(localPath: localURL.path, externalPath: destinationURL.path, status: .active)
-        appState.addMapping(mapping)
+        DispatchQueue.main.async {
+            self.appState.addMapping(mapping)
+        }
     }
     
     func restore(mapping: SymlinkMapping) throws {
         try FileManager.default.removeItem(atPath: mapping.localPath)
         try FileManager.default.moveItem(atPath: mapping.externalPath, toPath: mapping.localPath)
-        appState.removeMapping(id: mapping.id)
+        DispatchQueue.main.async {
+            self.appState.removeMapping(id: mapping.id)
+        }
     }
 }

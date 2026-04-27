@@ -72,9 +72,10 @@ struct ContentView: View {
                         self.isProcessing = true
                         self.processingMessage = "Restoring \(mapping.name)..."
                         
+                        let manager = linkManager
                         DispatchQueue.global(qos: .userInitiated).async {
                             do {
-                                try linkManager.restore(mapping: mapping)
+                                try manager.restore(mapping: mapping)
                                 DispatchQueue.main.async {
                                     selectedMappingID = nil
                                     self.isProcessing = false
@@ -223,11 +224,12 @@ struct ContentView: View {
         isProcessing = true
         processingMessage = "Moving \(url.lastPathComponent) to SSD..."
         
+        let manager = linkManager
         DispatchQueue.global(qos: .userInitiated).async {
             do {
-                try linkManager.moveAndLink(localURL: url)
+                try manager.moveAndLink(localURL: url)
                 DispatchQueue.main.async {
-                    linkManager.checkHealth()
+                    manager.checkHealth()
                     self.isProcessing = false
                 }
             } catch {
