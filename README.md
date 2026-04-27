@@ -1,5 +1,8 @@
-# Symply
+<p align="center">
+  <img src="AppIcon.png" width="128" alt="Symply Logo">
+</p>
 
+# Symply
 Symply is a lightweight macOS SwiftUI application designed to automate the migration of local folders to an external SSD by creating symbolic links. It allows you to quickly offload large folders to an external drive to save space, while preserving access via seamless symlinks.
 
 ## One-Click Deployment & Installation
