@@ -24,7 +24,7 @@ jobs:
         
     - name: Zip App
       run: |
-        zip -r Symply.zip Symply.app
+        ditto -c -k --keepParent Symply.app Symply.zip
 
     - name: Create Release
       uses: softprops/action-gh-release@v2

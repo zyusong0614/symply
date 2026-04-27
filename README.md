@@ -14,7 +14,14 @@ You can easily get the latest version of Symply without building from source:
 3. Extract the ZIP file.
 4. Drag and drop `Symply.app` to your `Applications` folder.
 
-> Note: If macOS prevents the app from running because it is from an unidentified developer, right-click (or Control-click) the app and select **Open**.
+> **Note:** If macOS prevents the app from running because it is from an unidentified developer, right-click (or Control-click) the app and select **Open**.
+> 
+> **Troubleshooting "The application can't be opened":** 
+> If macOS displays an error saying **"The application 'Symply' can't be opened"**, this is due to macOS quarantining unsigned apps downloaded from the internet. To fix this, open the **Terminal** app and run the following command (assuming you moved Symply to your Applications folder):
+> ```bash
+> xattr -cr /Applications/Symply.app
+> ```
+> After running this command, you will be able to open the app normally.
 
 ## Building from Source
 
